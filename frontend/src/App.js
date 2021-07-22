@@ -1,92 +1,35 @@
-import React, { Component } from "react"
-
-const slItems = [
-  {
-    name: 1,
-    item: "Banana",
-    done: true
-  },
-
-  {
-    name: 2,
-    item: "Chips",
-    done: true
-  },
-
-  {
-    name: 3,
-    item: "Ice cream",
-    done: true
-  },
-];
+import React, { Component } from 'react';
 
 class App extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        viewCompleted: false,
-        activeItem: {
-          name: "",
-          item: "",
-          done: false
-        },
-        shoppingList: []
-        };
-
-        async componentDidMount() {
-          try {
-            const res = await fetch('http://localhost:8000/api/todos/');
-            const shoppingList = await res.json();
-            this.setState({
-              shoppingList
-            });
-          } catch (e) {
-            console.log(e);
-        }
-        }
-        renderItems = () => {
-          const { viewCompleted } = this.state;
-          const newItems = this.state.todoList.filter(
-            item => item.done === viewCompleted
-          );
-          return newItems.map(item => (
-            <li 
-              key={item.name}
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              <span 
-                className={`todo-title mr-2 ${
-                  this.state.viewCompleted ? "completed-todo" : ""
-                }`}
-                title={item.item}
-                >
-                  {item.title}
-                </span>
-            </li>
-          ));
-        };
+    state = {
+        usernames : []
     };
 
-    render() {
-      return (
-        <main className="content">
-        <div className="row">
-          <div className="col-md-6 col-sm-10 mx-auto p-0">
-            <div className="card p-3">
-              <ul className="list-group list-group-flush">
-              {this.state.slItems.map(snack => (
-              <div>
-                <h1>{snack.name}</h1>
-                <span>{snack.item}</span>
-              </div>
-              ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </main>
-      )
-    }
-  }
 
-export default App;
+    async componentDidMount() {
+        try { 
+            const res = await fetch('http://127.0.0.1:8000/api/shopping_list');
+            const usernames = await res.json();
+            this.setState({
+                usernames
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    render() {
+        return(
+            <div>
+                {this.state.usernames.map(item => (
+                    <div key={item.id}>
+                        <h1>{item.name}</h1>  
+                        <h2>{item.item}</h2>                  
+                    </div>
+                ))}
+            </div>
+       );
+    }
+}
+
+export default App
