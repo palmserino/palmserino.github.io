@@ -1,0 +1,35 @@
+{
+  "name": "palmserino.github.io",
+  "version": "1.0.0",
+  "description": "Server Boot Instructions      1. Startup backend (shell 1)         1.a Activate the virtual environment          1.b Change directory to backend         1.c python -d manage.py runserver     2. Start frontend (shell 2)         2.a Change directory to frontend         2.b npm run start",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development ./snackmanager/frontend/src/index.js > ./snackmanager/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./snackmanager/frontend/src/index.js > ./snackmanager/frontend/static/frontend/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palmserino/palmserino.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/palmserino/palmserino.github.io/issues"
+  },
+  "homepage": "https://github.com/palmserino/palmserino.github.io#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

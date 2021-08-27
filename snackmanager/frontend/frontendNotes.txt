@@ -2,4 +2,8 @@ SRC contains all the components/redux/etc for ALL react stuff
 
 Templates contains the index.html
 
-Static will be the compiled js 
+Static will be the compiled js
+
+webpack.config.js really just loads the babel loader 
+
+the dev script in the package.json handles the javascript compilation 
