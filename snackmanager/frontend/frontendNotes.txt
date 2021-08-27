@@ -1,0 +1,5 @@
+SRC contains all the components/redux/etc for ALL react stuff
+
+Templates contains the index.html
+
+Static will be the compiled js 
