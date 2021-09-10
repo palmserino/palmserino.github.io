@@ -1,4 +1,4 @@
-asset main.js 861 KiB [emitted] (name: main)
+asset main.js 861 KiB [compared for emit] (name: main)
 runtime modules 274 bytes 1 module
 modules by path ./node_modules/ 842 KiB
   modules by path ./node_modules/scheduler/ 29.4 KiB
@@ -14,4 +14,4 @@ modules by path ./node_modules/ 842 KiB
 modules by path ./snackmanager/frontend/src/ 3.57 KiB
   ./snackmanager/frontend/src/index.js 35 bytes [built] [code generated]
   ./snackmanager/frontend/src/components/App.js 3.54 KiB [built] [code generated]
-webpack 5.51.1 compiled successfully in 4516 ms
+webpack 5.51.1 compiled successfully in 1851 ms
