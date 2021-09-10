@@ -7,3 +7,4 @@ Static will be the compiled js
 webpack.config.js really just loads the babel loader 
 
 the dev script in the package.json handles the javascript compilation 
+    - the current compilation for main.js goes  intoi the ./dist folder??

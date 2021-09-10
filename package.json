@@ -4,8 +4,8 @@
   "description": "Server Boot Instructions      1. Startup backend (shell 1)         1.a Activate the virtual environment          1.b Change directory to backend         1.c python -d manage.py runserver     2. Start frontend (shell 2)         2.a Change directory to frontend         2.b npm run start",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./snackmanager/frontend/src/index.js > ./snackmanager/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./snackmanager/frontend/src/index.js > ./snackmanager/frontend/static/frontend/main.js"
+    "dev": "webpack --mode development ./snackmanager/frontend/src/index.js --output-path ./snackmanager/frontend/static/frontend/",
+    "build": "webpack --mode production ./snackmanager/frontend/src/index.js --output-path ./snackmanager/frontend/static/frontend/"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
+    "bootstrap": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
