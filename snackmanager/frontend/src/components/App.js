@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import Header from './layout/Header';
-import Tmp from './layout/Tmp'
+import Header from './layout/Header'
 
 class App extends Component {
     render() {
         return (
-            <Header/>,
-            <h1>the method works</h1>
+            <Header />
         )
     }
 
