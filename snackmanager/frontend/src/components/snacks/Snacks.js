@@ -1,12 +1,16 @@
 import React, { Component, Fragment} from 'react';
 import { connect } from 'react-redux';  
 import PropTypes from 'prop-types'; 
-import { getSnacks } from '../../actions/snacks'; 
+import { getSnacks, deleteSnack, addSnack } from '../../actions/snacks'; 
 
 
 export class Snacks extends Component {
     static propTypes = {
-        snacks: PropTypes.array.isRequired
+        snacks: PropTypes.array.isRequired,
+        
+        // best practice to enforce this 
+        getSnacks: PropTypes.func.isRequired,
+        deleteSnack: PropTypes.func.isRequired
     }
 
     // on component mount we make the API call
@@ -36,7 +40,8 @@ export class Snacks extends Component {
                                 <td>{snack.name}</td>
                                 <td>{snack.item}</td>
                                 <td>{snack.done}</td>
-                                <td><button className="btn btn-danger btn-sm">Delete</button></td>
+                                <td><button onClick={this.props.deleteSnack.bind(this, snack.id)} 
+                                    className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
                         )) }
                     </tbody>
@@ -53,4 +58,4 @@ const mapStateToProps = state => ({
 });
 
 // adds the GET request function as a property 
-export default connect(mapStateToProps, { getSnacks })(Snacks);
+export default connect(mapStateToProps, { getSnacks, deleteSnack, addSnack })(Snacks);
