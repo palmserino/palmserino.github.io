@@ -21,7 +21,14 @@ export class Form extends Component {
         e.preventDefault();
         const { name, item, done } = this.state ;
         const snack = { name, item, done};
-        this.props.addSnack(snack)
+        this.props.addSnack(snack);
+
+        // Clears form on submit 
+        this.setState({
+            name: '',
+            item: '',
+            done: '',
+        })
     }
 
     render() {
@@ -55,9 +62,9 @@ export class Form extends Component {
                     <textarea
                     className="form-control"
                     type="text"
-                    name="item"
+                    name="done"
                     onChange={this.onChange}
-                    value={item}
+                    value={done}
                     />
                 </div>
                 <div className="form-group">

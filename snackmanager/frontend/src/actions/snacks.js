@@ -3,6 +3,7 @@
 // using axios for requests (async requests)
 
 import axios from 'axios';
+import { createMessage } from './messages';
 
 import { GET_SNACKS, DELETE_SNACK, ADD_SNACK, GET_ERRORS } from './types';
 
@@ -21,6 +22,7 @@ export const getSnacks = () => dispatch => {
 export const deleteSnack = (id) => dispatch => {
     axios.delete(`/api/snacks/${id}/`)
     .then(res => {
+        dispatch(createMessage({ deleteSnack: 'Snack deleted!'}));
         dispatch({
             type: DELETE_SNACK,
             payload: id 
@@ -40,10 +42,10 @@ export const addSnack = (snack) => dispatch => {
         }).catch(err => console.log(err.response.data));
 };
 */
-
 export const addSnack = (snack) => dispatch => {
     axios.post("/api/snacks/", snack)
         .then(res => {
+            dispatch(createMessage({ addSnack: 'Snack added!'}));
             dispatch({
                 type: ADD_SNACK,
                 payload: res.data 

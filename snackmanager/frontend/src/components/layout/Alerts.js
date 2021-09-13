@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 
 export class Alerts extends Component {
     static propTypes = {
-        error: PropTypes.object.isRequired
+        error: PropTypes.object.isRequired,
+        message: PropTypes.object.isRequired
     }
 
     // when we get a new prop (such as an error), this will run
     componentDidUpdate(prevProps) {
-        const { error, alert } = this.props;
+        const { error, alert, message } = this.props;
 
         if(error !== prevProps.error ) { // if the error prop type is diff from the previous
 
@@ -27,6 +28,18 @@ export class Alerts extends Component {
             }
             
         }
+
+        if(message !== prevProps.message) {
+            if(message.deleteSnack) {
+                alert.success(message.deleteSnack);
+            }
+            if(message.addSnack) {
+                alert.success(message.addSnack);
+            }
+
+        }
+
+
     }
     
     render() {
@@ -35,7 +48,8 @@ export class Alerts extends Component {
 }
 
 const mapStateToProps = state => ({
-    error: state.errors // any errors in the state become props with error as the prop type 
+    error: state.errors, // any errors in the state become props with error as the prop type 
+    message: state.messages 
 });
 
 export default connect(mapStateToProps)(withAlert()(Alerts)); 
