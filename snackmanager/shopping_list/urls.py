@@ -6,7 +6,7 @@ from .api import ShoppingListViewSet
 
 # use router to create the paths 
 router = routers.DefaultRouter()
-router.register(r'shoppingLists', ShoppingListViewSet, 'shoppingLists')  
+router.register(r'snacks', ShoppingListViewSet, 'shoppingLists')  
 
 urlpatterns = [
     # path('api', views.ShoppingListView, name='shopping list view'),
