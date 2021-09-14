@@ -1,7 +1,7 @@
 from rest_framework import serializers 
-from .models import ShoppingList
+from .models import Snack
 
-class ShoppingListSerializer(serializers.ModelSerializer):
+class SnackSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ShoppingList
+        model = Snack
         fields = ('id','name','item','done')

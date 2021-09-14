@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .models import ShoppingList   
-from .serializers import ShoppingListSerializer
+from .models import Snack   
+from .serializers import SnackSerializer
 from rest_framework import viewsets 
 
 # Create your views here.

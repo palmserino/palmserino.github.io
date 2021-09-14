@@ -3,9 +3,9 @@
 // using axios for requests (async requests)
 
 import axios from 'axios';
-import { createMessage } from './messages';
+import { createMessage, returnErrors } from './messages';
 
-import { GET_SNACKS, DELETE_SNACK, ADD_SNACK, GET_ERRORS } from './types';
+import { GET_SNACKS, DELETE_SNACK, ADD_SNACK } from './types';
 
 // GET SNACKS
 export const getSnacks = () => dispatch => {
@@ -15,7 +15,7 @@ export const getSnacks = () => dispatch => {
                 type: GET_SNACKS,
                 payload: res.data 
             });
-        }).catch(err => console.log(err));
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
 
 // Deletes snacks 
@@ -31,17 +31,6 @@ export const deleteSnack = (id) => dispatch => {
 }
 
 // Adds snacks 
-/*
-export const addSnack = (snack) => dispatch => {
-    axios.post("/api/snacks/", snack)
-        .then(res => {
-            dispatch({
-                type: ADD_SNACK,
-                payload: res.data 
-            });
-        }).catch(err => console.log(err.response.data));
-};
-*/
 export const addSnack = (snack) => dispatch => {
     axios.post("/api/snacks/", snack)
         .then(res => {
@@ -50,14 +39,5 @@ export const addSnack = (snack) => dispatch => {
                 type: ADD_SNACK,
                 payload: res.data 
             });
-        }).catch(err => {
-            const errors = {
-                msg: err.response.data,
-                status: err.response.status
-            };
-            dispatch({
-                type: GET_ERRORS,
-                payload: errors
-            });
-        });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };

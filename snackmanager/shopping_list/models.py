@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User 
 
 
-class ShoppingList(models.Model):
+class Snack(models.Model):
     name = models.CharField(max_length=20)
     item = models.CharField(max_length=10)
     done = models.BooleanField(default=False)
@@ -17,4 +17,4 @@ class ShoppingList(models.Model):
         return self.name 
 
     def get_absolute_url(self):
-        return reverse('shoppingList-detail', kwargs={'pk': self.pk})
+        return reverse('snack-detail', kwargs={'pk': self.pk})

@@ -2,14 +2,13 @@ from django.urls import path, include
 from rest_framework import routers 
 from . import views 
 from .views import * 
-from .api import ShoppingListViewSet
+from .api import SnackViewSet
 
 # use router to create the paths 
 router = routers.DefaultRouter()
-router.register(r'snacks', ShoppingListViewSet, 'shoppingLists')  
+router.register(r'snacks', SnackViewSet, 'snacks')  
 
 urlpatterns = [
-    # path('api', views.ShoppingListView, name='shopping list view'),
     path('', views.index, name='index'),
     path('api/', include(router.urls))
 ]
