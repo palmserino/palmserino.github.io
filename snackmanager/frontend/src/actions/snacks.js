@@ -27,7 +27,7 @@ export const deleteSnack = (id) => dispatch => {
             type: DELETE_SNACK,
             payload: id 
         });
-    }).catch(err => console.log(err));
+    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 }
 
 // Adds snacks 
