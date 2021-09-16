@@ -29,3 +29,14 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 # Login Serializer 
+# don't need serializers.ModelSerializer because only validating that 
+# user exists not creating a model
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        user = authenticate(**data)
+        if user and user.is_active:
+            return user 
+        raise serializers.ValidationError('Incorrect Credentials')
