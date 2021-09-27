@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 /* Creates a nav bar */
 
@@ -19,6 +20,13 @@ export class Header extends Component {
                         <li className="nav-item">
                         <a className="nav-link active" aria-current="page" href="/admin">Admin</a>
                         </li>
+                        <li className="nav-item">
+                        <Link to="/register" className="nav-link">Register</Link>
+                        </li>
+                        <li className="nav-item">
+                        <Link to="/login" className="nav-link">Login</Link>
+                        </li>
+                        
                     </ul>
                     </div>
                 </div>

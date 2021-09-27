@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -7,6 +8,8 @@ import AlertTemplate from 'react-alert-template-basic';
 import Header from './layout/Header';
 import Dashboard from './snacks/Dashboard';
 import Alerts from './layout/Alerts';
+import Login from './accounts/Login';
+import Register from './accounts/Register';
 
 import { Provider } from 'react-redux'; // provider connects react to redux 
 import store from '../store'; 
@@ -22,13 +25,20 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <AlertProvider template={AlertTemplate} {...alertOptions}>
-                    <Fragment>
-                        <Header />
-                        <Alerts />
-                        <div className='container'>
-                            <Dashboard />
-                        </div>
-                    </Fragment>  
+                    <Router>
+                        <Fragment>
+                            <Header />
+                            <Alerts />
+                            <div className='container'>
+                                <Switch>
+                                    <Route exact path="/" component={Dashboard} />
+                                    <Route exact path="/register" component={Register} />
+                                    <Route exact path="/login" component={Login} />
+                                </Switch>
+                                
+                            </div>
+                        </Fragment>  
+                    </Router>
                 </AlertProvider>
             </Provider>
         )
