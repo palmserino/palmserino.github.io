@@ -26,6 +26,13 @@ export class Alerts extends Component {
             if(error.msg.done) {
                 alert.error(`Done: ${error.msg.done.join()}`);
             }
+            if(error.msg.non_field_errors) {
+                alert.error(error.msg.non_field_errors.join());
+            }
+            // handles when a user exists with the attempted username in registration
+            if(error.msg.username) {
+                alert.error(error.msg.username.join());
+            }
             
         }
 
@@ -35,6 +42,9 @@ export class Alerts extends Component {
             }
             if(message.addSnack) {
                 alert.success(message.addSnack);
+            }
+            if(message.passwordsNotMatch) {
+                alert.error(message.passwordsNotMatch);
             }
 
         }
