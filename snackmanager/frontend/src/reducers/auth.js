@@ -1,4 +1,4 @@
-import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/types';
+import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS } from '../actions/types';
 
 
 const initialState = {
@@ -33,6 +33,7 @@ export default function(state = initialState, action) {
         // When we have an error, clear the token and set back to initial state
         case AUTH_ERROR:
         case LOGIN_FAIL: // does the same as AUTH_ERROR
+        case LOGOUT_SUCCESS:
             localStorage.removeItem('token');
             return {
                 ...state,
