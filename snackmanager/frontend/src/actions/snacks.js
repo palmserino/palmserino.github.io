@@ -4,12 +4,13 @@
 
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
+import { tokenConfig } from "./auth";
 
 import { GET_SNACKS, DELETE_SNACK, ADD_SNACK } from './types';
 
 // GET SNACKS
-export const getSnacks = () => dispatch => {
-    axios.get("/api/snacks/")
+export const getSnacks = () => (dispatch, getState) => {
+    axios.get("/api/snacks/", tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: GET_SNACKS,
@@ -19,8 +20,8 @@ export const getSnacks = () => dispatch => {
 };
 
 // Deletes snacks 
-export const deleteSnack = (id) => dispatch => {
-    axios.delete(`/api/snacks/${id}/`)
+export const deleteSnack = (id) => (dispatch, getState) => {
+    axios.delete(`/api/snacks/${id}/`, tokenConfig(getState))
     .then(res => {
         dispatch(createMessage({ deleteSnack: 'Snack deleted!'}));
         dispatch({
@@ -31,8 +32,8 @@ export const deleteSnack = (id) => dispatch => {
 }
 
 // Adds snacks 
-export const addSnack = (snack) => dispatch => {
-    axios.post("/api/snacks/", snack)
+export const addSnack = (snack) => (dispatch, getState) => {
+    axios.post("/api/snacks/", snack, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ addSnack: 'Snack added!'}));
             dispatch({
