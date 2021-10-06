@@ -29,8 +29,12 @@ export class Snacks extends Component {
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Item</th>
-                            <th>Done</th>
+                            <th>Price</th>
+                            <th>Store Name</th>
+                            <th>Quantity</th>
+                            <th>Type</th>
+                            <th>Total Calories</th>
+                            <th>Time Purchased</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,8 +42,12 @@ export class Snacks extends Component {
                             <tr key={snack.id}>
                                 <td>{snack.id}</td>
                                 <td>{snack.name}</td>
-                                <td>{snack.item}</td>
-                                <td>{snack.done}</td>
+                                <td>{snack.price}</td>
+                                <td>{snack.store_name}</td>
+                                <td>{snack.quantity}</td>
+                                <td>{snack.type}</td>
+                                <td>{snack.total_cals}</td>
+                                <td>{snack.time_purchased}</td>
                                 <td><button onClick={this.props.deleteSnack.bind(this, snack.id)} 
                                     className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
