@@ -28,12 +28,12 @@ SNACK_TYPES = (
 class Snack(models.Model):
     # id handled in background (primary key for this model)
     name = models.CharField(max_length=20)
-    price = models.FloatField() 
-    store_name = models.CharField(max_length=20)
-    quantity = models.IntegerField()
-    type = models.CharField(max_length=6, choices=SNACK_TYPES)
-    total_cals = models.IntegerField()
-    time_purchased = models.DateTimeField(auto_now=False, auto_now_add=False)
+    price = models.FloatField(default=0) 
+    store_name = models.CharField(max_length=20, default='')
+    quantity = models.IntegerField(default=0)
+    type = models.CharField(max_length=6, choices=SNACK_TYPES, default='')
+    total_cals = models.IntegerField(default=0)
+    time_purchased = models.DateTimeField(auto_now=False, auto_now_add=False, null=True)
 
     # models.CASCADE deletes all ShoppingLists associated with a User object 
     owner = models.ForeignKey(User, related_name="snacks", on_delete=models.CASCADE,

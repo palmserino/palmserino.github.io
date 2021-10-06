@@ -57,7 +57,7 @@ export class Form extends Component {
                 </div>
                 <div className="form-group">
                     <label>Price</label>
-                    <textarea
+                    <input
                     className="form-control"
                     type="text"
                     name="price"
@@ -67,7 +67,7 @@ export class Form extends Component {
                 </div>
                 <div className="form-group">
                     <label>Where did you buy this snack?</label>
-                    <textarea
+                    <input
                     className="form-control"
                     type="text"
                     name="store_name"
@@ -77,9 +77,9 @@ export class Form extends Component {
                 </div>
                 <div className="form-group">
                     <label>Quantity</label>
-                    <textarea
+                    <input
                     className="form-control"
-                    type="text"
+                    type="number"
                     name="quantity"
                     onChange={this.onChange}
                     value={quantity}
@@ -87,7 +87,7 @@ export class Form extends Component {
                 </div>
                 <div className="form-group">
                     <label>Type</label>
-                    <textarea
+                    <input
                     className="form-control"
                     type="text"
                     name="type"
@@ -97,19 +97,19 @@ export class Form extends Component {
                 </div>
                 <div className="form-group">
                     <label>Total Calories</label>
-                    <textarea
+                    <input
                     className="form-control"
-                    type="text"
+                    type="number"
                     name="total_cals"
                     onChange={this.onChange}
-                    value={type}
+                    value={total_cals}
                     />
                 </div>
                 <div className="form-group">
                     <label>Time Purchased</label>
-                    <textarea
+                    <input
                     className="form-control"
-                    type="text"
+                    type="datetime-local"
                     name="time_purchased"
                     onChange={this.onChange}
                     value={time_purchased}
