@@ -26,10 +26,10 @@ export class Form extends Component {
         addSnack: PropTypes.func.isRequired
     }
 
-    // e for event
+    // For non-dropdown state updates
     onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-    // for dropdowns
+    // Handles changes to state from dropdowns
     changeHandler = e => {
         this.setState({ type: e ? e.value : '' });
       };
