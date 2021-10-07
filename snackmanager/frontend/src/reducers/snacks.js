@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
         case DELETE_SNACK:
             return {
                 ...state,
-                snacks: state.snacks.filter(lead => lead.id !== action.payload)
+                snacks: state.snacks.filter(snack => snack.id !== action.payload)
             }
 
         case ADD_SNACK:

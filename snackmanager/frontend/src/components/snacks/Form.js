@@ -6,8 +6,12 @@ import { addSnack } from '../../actions/snacks';
 export class Form extends Component {
     state = {
         name: '',
-        item: '',
-        done: '',
+        price: '',
+        store_name: '',
+        quantity: '',
+        type: '',
+        total_cals: '',
+        time_purchased: ''
     }
 
     static propTypes = {
@@ -19,20 +23,24 @@ export class Form extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        const { name, item, done } = this.state ;
-        const snack = { name, item, done};
+        const { name, price, store_name, quantity, type, total_cals, time_purchased } = this.state ;
+        const snack = { name, price, store_name, quantity, type, total_cals, time_purchased };
         this.props.addSnack(snack);
 
         // Clears form on submit 
         this.setState({
             name: '',
-            item: '',
-            done: '',
+            price: '',
+            store_name: '',
+            quantity: '',
+            type: '',
+            total_cals: '',
+            time_purchased: ''
         })
     }
 
     render() {
-        const { name, item, done } = this.state;
+        const { name, price, store_name, quantity, type, total_cals, time_purchased } = this.state;
         return (
             <div className="card card-body mt-4 mb-4">
                 <h2>Add Snack</h2>
@@ -48,23 +56,63 @@ export class Form extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Item</label>
-                    <textarea
+                    <label>Price</label>
+                    <input
                     className="form-control"
                     type="text"
-                    name="item"
+                    name="price"
                     onChange={this.onChange}
-                    value={item}
+                    value={price}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Done</label>
-                    <textarea
+                    <label>Where did you buy this snack?</label>
+                    <input
                     className="form-control"
                     type="text"
-                    name="done"
+                    name="store_name"
                     onChange={this.onChange}
-                    value={done}
+                    value={store_name}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Quantity</label>
+                    <input
+                    className="form-control"
+                    type="number"
+                    name="quantity"
+                    onChange={this.onChange}
+                    value={quantity}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Type</label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="type"
+                    onChange={this.onChange}
+                    value={type}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Total Calories</label>
+                    <input
+                    className="form-control"
+                    type="number"
+                    name="total_cals"
+                    onChange={this.onChange}
+                    value={total_cals}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Time Purchased</label>
+                    <input
+                    className="form-control"
+                    type="datetime-local"
+                    name="time_purchased"
+                    onChange={this.onChange}
+                    value={time_purchased}
                     />
                 </div>
                 <div className="form-group">
