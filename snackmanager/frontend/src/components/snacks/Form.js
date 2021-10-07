@@ -1,7 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addSnack } from '../../actions/snacks';
+import Select from 'react-select';
+
+// choices for dropdown (same as model choices)
+const option = [
+    {value: 'sweet', label: 'Sweet'},
+    {value: 'savory', label: 'Savory'},
+    {value: 'sour', label: 'Sour'}
+  ]
 
 export class Form extends Component {
     state = {
@@ -20,6 +28,11 @@ export class Form extends Component {
 
     // e for event
     onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+    // for dropdowns
+    changeHandler = e => {
+        this.setState({ type: e ? e.value : '' });
+      };
 
     onSubmit = e => {
         e.preventDefault();
@@ -87,12 +100,11 @@ export class Form extends Component {
                 </div>
                 <div className="form-group">
                     <label>Type</label>
-                    <input
-                    className="form-control"
-                    type="text"
-                    name="type"
-                    onChange={this.onChange}
-                    value={type}
+                    <Select
+                        name="type"
+                        value={option.find(item => item.value === type)}
+                        onChange={this.changeHandler}
+                        options={option}
                     />
                 </div>
                 <div className="form-group">
