@@ -22,18 +22,18 @@ export class Snacks extends Component {
     render() {
         return (
             <Fragment>
-                <h2>Snacks</h2>
+                <h2>Snack Purchases</h2>
 
                 <table className="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Store Name</th>
-                            <th>Quantity</th>
                             <th>Type</th>
-                            <th>Total Calories</th>
+                            <th>Quantity</th>
+                            <th>Price / unit</th>
+                            <th>Calories / unit</th>
+                            <th>Store Name</th>   
                             <th>Time Purchased</th>
                         </tr>
                     </thead>
@@ -42,11 +42,11 @@ export class Snacks extends Component {
                             <tr key={snack.id}>
                                 <td>{snack.id}</td>
                                 <td>{snack.name}</td>
-                                <td>{snack.price}</td>
-                                <td>{snack.store_name}</td>
-                                <td>{snack.quantity}</td>
                                 <td>{snack.type}</td>
+                                <td>{snack.quantity}</td>
+                                <td>{snack.price}</td>
                                 <td>{snack.total_cals}</td>
+                                <td>{snack.store_name}</td>   
                                 <td>{snack.time_purchased}</td>
                                 <td><button onClick={this.props.deleteSnack.bind(this, snack.id)} 
                                     className="btn btn-danger btn-sm">Delete</button></td>
