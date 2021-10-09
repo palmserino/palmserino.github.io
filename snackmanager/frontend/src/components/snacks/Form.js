@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addSnack } from '../../actions/snacks';
@@ -8,7 +8,7 @@ import Select from 'react-select';
 const option = [
     {value: 'sweet', label: 'Sweet'},
     {value: 'savory', label: 'Savory'},
-    {value: 'sour', label: 'Sour'}
+    {value: 'sour', label: 'Sour'},
   ]
 
 export class Form extends Component {
@@ -21,7 +21,7 @@ export class Form extends Component {
         total_cals: '',
         time_purchased: ''
     }
-
+    
     static propTypes = {
         addSnack: PropTypes.func.isRequired
     }
@@ -32,7 +32,7 @@ export class Form extends Component {
     // Handles changes to state from dropdowns
     changeHandler = e => {
         this.setState({ type: e ? e.value : '' });
-      };
+    };
 
     onSubmit = e => {
         e.preventDefault();
@@ -49,8 +49,8 @@ export class Form extends Component {
             type: '',
             total_cals: '',
             time_purchased: ''
-        })
-    }
+        });
+    };
 
     render() {
         const { name, price, store_name, quantity, type, total_cals, time_purchased } = this.state;
@@ -73,7 +73,7 @@ export class Form extends Component {
                         <label>Type</label>
                         <Select
                             name="type"
-                            value={option.find(item => item.value === type)}
+                            value={this.state.type.value}
                             onChange={this.changeHandler}
                             options={option}
                         />
