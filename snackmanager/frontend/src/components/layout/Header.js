@@ -17,12 +17,12 @@ export class Header extends Component {
         const { isAuthenticated, user } = this.props.auth;
         
         const authLinks = (
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <span className="navbar-text mr-12">
+            <ul className="navbar-nav ">
+                <div className="d-inline-flex p-2">
                     <strong>
                         { user ? `Welcome ${user.username}` : ''}
                     </strong>
-                </span>
+                </div>
                 <li className="nav-item">
                     <button onClick={this.props.logout} className="nav-link btn btn-info btn-sm text-light">
                         Logout
@@ -32,7 +32,7 @@ export class Header extends Component {
         );
 
         const guestLinks = (
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav">
                 <li className="nav-item">
                 <Link to="/register" className="nav-link">Register</Link>
                 </li>
