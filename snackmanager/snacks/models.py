@@ -63,7 +63,7 @@ class Eat(models.Model):
                                 null=True )
 
     def __str__(self):
-        return str(self.id)
+        return str(self.snack.name) + '-' + str(self.id) # eats are associated with a snack and the eats id 
 
     def get_absolute_url(self):
         return reverse('eat-detail', kwargs={'pk': self.pk})
