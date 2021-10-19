@@ -55,6 +55,7 @@ export class Eat extends Component {
 
 
 // map the redux state to the props of this component 
+// state.eats.eats comes from the reducer (b/c the reducer LIVES in the state)
 const mapStateToProps = state => ({
     eats: state.eats.eats
 });
