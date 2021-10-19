@@ -29,7 +29,12 @@ class EatViewSet(viewsets.ModelViewSet):
 
     # might need a get_queryset that takes in a user and snack 
     # to get all the eats associated with that?
-    queryset = Eat.objects.all()
+    """     def get_queryset(self):
+            snacks = self.request.user.snacks.all()
+            return snacks.eats.all() """
+
+    queryset = Eat.objects.all() # this just displays all the eats objects out there
+
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.snack)
