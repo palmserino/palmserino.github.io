@@ -63,7 +63,7 @@ class Eat(models.Model):
                                 null=True )
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     def get_absolute_url(self):
         return reverse('eat-detail', kwargs={'pk': self.pk})
