@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User 
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 """ class Snack(models.Model):
@@ -44,3 +45,25 @@ class Snack(models.Model):
 
     def get_absolute_url(self):
         return reverse('snack-detail', kwargs={'pk': self.pk})
+
+
+# eats class (many eats associated with one snack)
+class Eat(models.Model):
+    amount = models.FloatField(default=0.0,validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],) 
+    satisfaction = models.IntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(10)])
+    location = models.CharField(max_length=20, null=True)
+    shared = models.BooleanField(default=False)
+    finished = models.BooleanField(default=False)
+
+    # True = snack
+    snack_or_meal = models.BooleanField(default=True)
+
+
+    snack = models.ForeignKey(Snack, related_name="eats", on_delete=models.CASCADE,
+                                null=True )
+
+    def __str__(self):
+        return str(self.snack.name) + '-' + str(self.id) # eats are associated with a snack and the eats id 
+
+    def get_absolute_url(self):
+        return reverse('eat-detail', kwargs={'pk': self.pk})

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
 import { tokenConfig } from "./auth";
 
-import { GET_SNACKS, DELETE_SNACK, ADD_SNACK } from './types';
+import { GET_SNACKS, DELETE_SNACK, ADD_SNACK, GET_EATS } from './types';
 
 // GET SNACKS
 export const getSnacks = () => (dispatch, getState) => {
@@ -38,6 +38,17 @@ export const addSnack = (snack) => (dispatch, getState) => {
             dispatch(createMessage({ addSnack: 'Snack added!'}));
             dispatch({
                 type: ADD_SNACK,
+                payload: res.data 
+            });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
+
+// Gets eats (temporary)
+export const getEats = () => (dispatch, getState) => {
+    axios.get("/api/eats/", tokenConfig(getState))
+        .then(res => {
+            dispatch({
+                type: GET_EATS,
                 payload: res.data 
             });
         }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
