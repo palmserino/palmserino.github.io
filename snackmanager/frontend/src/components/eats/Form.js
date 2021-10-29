@@ -12,7 +12,7 @@ export class EatForm extends Component {
     }
     
     static propTypes = {
-        addSnack: PropTypes.func.isRequired
+        addEat: PropTypes.func.isRequired
     }
 
     // For non-dropdown state updates
@@ -24,9 +24,9 @@ export class EatForm extends Component {
     onSubmit = e => {
         e.preventDefault();
         const { id, amount, satisfaction, location } = this.state ;
-/*         const { name, price, store_name, quantity, type, total_cals, time_purchased } = this.state ;
-        const snack = { name, price, store_name, quantity, type, total_cals, time_purchased };
-        this.props.addSnack(snack); */
+        const eat = { id, amount, satisfaction, location };
+        console.log(eat)
+        this.props.addEat(eat);
 
         // Clears form on submit 
         this.setState({
@@ -38,7 +38,7 @@ export class EatForm extends Component {
     };
 
     render() {
-        const { id, amount, satisfaction, location, shared, finished, snack_or_meal } = this.state ;
+        const { id, amount, satisfaction, location } = this.state ;
         return (
             <div className="card card-body mt-4 mb-4">
                 <h2 className="d-flex justify-content-center">Add an 'Eat' to a Snack</h2>
@@ -107,11 +107,5 @@ export class EatForm extends Component {
 
 }
 
-const mapStateToProps = state => ({
-    eats: state.eats.eats
-});
-
-export default connect(mapStateToProps, { addEat })(EatForm); 
-
 // don't need map state to props hence null 
-//export default connect(null, { addSnack })(Form) 
+export default connect(null, { addEat })(EatForm) 

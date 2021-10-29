@@ -1,15 +1,14 @@
 import React, { Fragment, Component } from 'react';
-import EatForm from './EatForm';
 import { connect } from 'react-redux';  
 import PropTypes from 'prop-types'; 
-import { getEats } from '../../actions/eats'; 
+import { getEats, addEat, deleteEat } from '../../actions/eats'; 
 
-export class Eat extends Component {
+export class Eats extends Component {
     static propTypes = {
         eats: PropTypes.array.isRequired,
-        
-        // best practice to enforce this 
         getEats: PropTypes.func.isRequired,
+        addEat: PropTypes.func.isRequired,
+        deleteEat: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
@@ -19,7 +18,6 @@ export class Eat extends Component {
     render() {
         return (
             <Fragment>
-                <EatForm />
                 <h2>All Eats</h2>
 
                 <table className="table table-striped">
@@ -38,7 +36,10 @@ export class Eat extends Component {
                                 <td>{eat.amount}</td>
                                 <td>{eat.satisfaction}</td>
                                 <td>{eat.location}</td>
+                                <td><button onClick={this.props.deleteEat.bind(this, eat.id)} 
+                                    className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
+                            
                         )) }
                     </tbody>
                 </table>
@@ -55,4 +56,4 @@ const mapStateToProps = state => ({
 });
 
 // adds the GET request function as a property 
-export default connect(mapStateToProps, { getEats })(Eat);
+export default connect(mapStateToProps, { getEats, deleteEat, addEat })(Eats);
