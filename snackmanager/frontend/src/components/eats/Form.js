@@ -58,7 +58,7 @@ export class EatForm extends Component {
                         />
                     </div>
                     <div className="col">
-                        <label>Amount</label>
+                        <label>Amount (enter a number between 0 and 1)</label>
                         <input
                         className="form-control"
                         type="text"
@@ -71,7 +71,7 @@ export class EatForm extends Component {
 
                 <div className="row mt-2">
                     <div className="col">
-                        <label>Satisfaction</label>
+                        <label>Satisfaction (0 to 10)</label>
                         <input
                         className="form-control"
                         type="number"
