@@ -29,9 +29,6 @@ export class Eat extends Component {
                             <th>Amount</th>
                             <th>Satisfaction</th>
                             <th>Location</th>
-                            <th>Shared</th>
-                            <th>Finished</th>
-                            <th>Snack or Meal?</th>   
                         </tr>
                     </thead>
                     <tbody>
@@ -41,9 +38,6 @@ export class Eat extends Component {
                                 <td>{eat.amount}</td>
                                 <td>{eat.satisfaction}</td>
                                 <td>{eat.location}</td>
-                                <td>{eat.shared}</td>
-                                <td>{eat.finished}</td>
-                                <td>{eat.snack_or_meal}</td>   
                             </tr>
                         )) }
                     </tbody>

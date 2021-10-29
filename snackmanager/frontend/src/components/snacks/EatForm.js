@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addSnack } from '../../actions/snacks';
-import Select from 'react-select';
-
 
 export class EatForm extends Component {
     state = {
@@ -11,24 +8,11 @@ export class EatForm extends Component {
         amount: '',
         satisfaction: '',
         location: '',
-        shared: false,
-        finished: false,
-        snack_or_meal: true // true = snack 
     }
     
-/*     static propTypes = {
+    static propTypes = {
         addSnack: PropTypes.func.isRequired
-    } */
-
-    checkboxChange(e) {
-        const target = e.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
+    }
 
     // For non-dropdown state updates
     onChange = e => {
@@ -38,7 +22,7 @@ export class EatForm extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        const { id, amount, satisfaction, location, shared, finished, snack_or_meal } = this.state ;
+        const { id, amount, satisfaction, location } = this.state ;
 /*         const { name, price, store_name, quantity, type, total_cals, time_purchased } = this.state ;
         const snack = { name, price, store_name, quantity, type, total_cals, time_purchased };
         this.props.addSnack(snack); */
@@ -49,9 +33,6 @@ export class EatForm extends Component {
             amount: '',
             satisfaction: '',
             location: '',
-            shared: false,
-            finished: false,
-            snack_or_meal: true // true = snack 
         });
     };
 
@@ -102,29 +83,6 @@ export class EatForm extends Component {
                         />
                     </div>
                     <div className="col">
-                        <label>Did you share this Snack?</label>
-                        <input
-                        className="form-control "
-                        type="checkbox"
-                        name="shared"
-                        checked={this.state.shared}
-                        onChange={this.checkboxChange}
-                        />
-                    </div>
-                    <div className="col">
-                        <label >Finished?</label>
-                        <input
-                        className="form-control "
-                        type="checkbox"
-                        name="finished"
-                        checked={this.state.finished}
-                        onChange={this.checkboxChange}
-                        />
-                    </div>
-                </div>
-
-                <div className="row mt-2">
-                    <div className="col">
                         <label>Location</label>
                         <input
                         className="form-control"
@@ -132,16 +90,6 @@ export class EatForm extends Component {
                         name="location"
                         onChange={this.onChange}
                         value={location}
-                        />
-                    </div>
-                    <div className="col">
-                        <label>Snack or Meal</label>
-                        <input
-                        className="form-control"
-                        type="datetime-local"
-                        name="snack_or_meal"
-                        onChange={this.onChange}
-                        value={snack_or_meal}
                         />
                     </div>
                 </div>
