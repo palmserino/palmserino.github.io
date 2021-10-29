@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import EatForm from './EatForm';
 import { connect } from 'react-redux';  
 import PropTypes from 'prop-types'; 
-import { getEats } from '../../actions/snacks'; 
+import { getEats } from '../../actions/eats'; 
 
 export class Eat extends Component {
     static propTypes = {

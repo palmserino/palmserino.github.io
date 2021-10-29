@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { addEat } from '../../actions/eats'; 
 
 export class EatForm extends Component {
     state = {
@@ -35,9 +36,6 @@ export class EatForm extends Component {
             location: '',
         });
     };
-
-
-
 
     render() {
         const { id, amount, satisfaction, location, shared, finished, snack_or_meal } = this.state ;
@@ -109,7 +107,11 @@ export class EatForm extends Component {
 
 }
 
-export default connect()(EatForm); 
+const mapStateToProps = state => ({
+    eats: state.eats.eats
+});
+
+export default connect(mapStateToProps, { addEat })(EatForm); 
 
 // don't need map state to props hence null 
 //export default connect(null, { addSnack })(Form) 

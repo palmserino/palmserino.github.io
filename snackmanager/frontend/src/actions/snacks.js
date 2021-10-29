@@ -43,7 +43,7 @@ export const addSnack = (snack) => (dispatch, getState) => {
         }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
 
-// Gets eats (temporary)
+/* // Gets eats (temporary)
 export const getEats = () => (dispatch, getState) => {
     axios.get("/api/eats/", tokenConfig(getState))
         .then(res => {
@@ -52,4 +52,4 @@ export const getEats = () => (dispatch, getState) => {
                 payload: res.data 
             });
         }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
-};
+}; */
