@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addSnack } from '../../actions/snacks';
-import Select from 'react-select';
-
+import { addEat } from '../../actions/eats'; 
 
 export class EatForm extends Component {
     state = {
@@ -11,24 +9,11 @@ export class EatForm extends Component {
         amount: '',
         satisfaction: '',
         location: '',
-        shared: false,
-        finished: false,
-        snack_or_meal: true // true = snack 
     }
     
-/*     static propTypes = {
-        addSnack: PropTypes.func.isRequired
-    } */
-
-    checkboxChange(e) {
-        const target = e.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
+    static propTypes = {
+        addEat: PropTypes.func.isRequired
+    }
 
     // For non-dropdown state updates
     onChange = e => {
@@ -38,10 +23,10 @@ export class EatForm extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        const { id, amount, satisfaction, location, shared, finished, snack_or_meal } = this.state ;
-/*         const { name, price, store_name, quantity, type, total_cals, time_purchased } = this.state ;
-        const snack = { name, price, store_name, quantity, type, total_cals, time_purchased };
-        this.props.addSnack(snack); */
+        const { id, amount, satisfaction, location } = this.state ;
+        const eat = { id, amount, satisfaction, location };
+        console.log(eat)
+        this.props.addEat(eat);
 
         // Clears form on submit 
         this.setState({
@@ -49,17 +34,11 @@ export class EatForm extends Component {
             amount: '',
             satisfaction: '',
             location: '',
-            shared: false,
-            finished: false,
-            snack_or_meal: true // true = snack 
         });
     };
 
-
-
-
     render() {
-        const { id, amount, satisfaction, location, shared, finished, snack_or_meal } = this.state ;
+        const { id, amount, satisfaction, location } = this.state ;
         return (
             <div className="card card-body mt-4 mb-4">
                 <h2 className="d-flex justify-content-center">Add an 'Eat' to a Snack</h2>
@@ -79,7 +58,7 @@ export class EatForm extends Component {
                         />
                     </div>
                     <div className="col">
-                        <label>Amount</label>
+                        <label>Amount (enter a number between 0 and 1)</label>
                         <input
                         className="form-control"
                         type="text"
@@ -92,7 +71,7 @@ export class EatForm extends Component {
 
                 <div className="row mt-2">
                     <div className="col">
-                        <label>Satisfaction</label>
+                        <label>Satisfaction (0 to 10)</label>
                         <input
                         className="form-control"
                         type="number"
@@ -102,29 +81,6 @@ export class EatForm extends Component {
                         />
                     </div>
                     <div className="col">
-                        <label>Did you share this Snack?</label>
-                        <input
-                        className="form-control "
-                        type="checkbox"
-                        name="shared"
-                        checked={this.state.shared}
-                        onChange={this.checkboxChange}
-                        />
-                    </div>
-                    <div className="col">
-                        <label >Finished?</label>
-                        <input
-                        className="form-control "
-                        type="checkbox"
-                        name="finished"
-                        checked={this.state.finished}
-                        onChange={this.checkboxChange}
-                        />
-                    </div>
-                </div>
-
-                <div className="row mt-2">
-                    <div className="col">
                         <label>Location</label>
                         <input
                         className="form-control"
@@ -132,16 +88,6 @@ export class EatForm extends Component {
                         name="location"
                         onChange={this.onChange}
                         value={location}
-                        />
-                    </div>
-                    <div className="col">
-                        <label>Snack or Meal</label>
-                        <input
-                        className="form-control"
-                        type="datetime-local"
-                        name="snack_or_meal"
-                        onChange={this.onChange}
-                        value={snack_or_meal}
                         />
                     </div>
                 </div>
@@ -161,7 +107,5 @@ export class EatForm extends Component {
 
 }
 
-export default connect()(EatForm); 
-
 // don't need map state to props hence null 
-//export default connect(null, { addSnack })(Form) 
+export default connect(null, { addEat })(EatForm) 

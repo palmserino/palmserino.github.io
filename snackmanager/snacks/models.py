@@ -52,12 +52,6 @@ class Eat(models.Model):
     amount = models.FloatField(default=0.0,validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],) 
     satisfaction = models.IntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(10)])
     location = models.CharField(max_length=20, null=True)
-    shared = models.BooleanField(default=False)
-    finished = models.BooleanField(default=False)
-
-    # True = snack
-    snack_or_meal = models.BooleanField(default=True)
-
 
     snack = models.ForeignKey(Snack, related_name="eats", on_delete=models.CASCADE,
                                 null=True )

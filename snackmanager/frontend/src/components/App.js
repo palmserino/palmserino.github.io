@@ -6,13 +6,13 @@ import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
 import Header from './layout/Header';
-import Dashboard from './snacks/Dashboard';
+import PurchaseDashboard from './snacks/PurchaseDashboard';
+import EatDashboard from './eats/EatDashboard';
 import Alerts from './layout/Alerts';
 
 // these components are rendered on new pages using routes
 import Login from './accounts/Login';
 import Register from './accounts/Register';
-import Eat from './snacks/Eat';
 
 // used to verify authentication before displaying snack data 
 import PrivateRoute from './common/PrivateRoute';
@@ -43,8 +43,8 @@ class App extends Component {
                             <Alerts />
                             <div className='container'>
                                 <Switch>
-                                    <PrivateRoute exact path="/" component={Dashboard} />
-                                    <PrivateRoute exact path="/eat" component={Eat} />
+                                    <PrivateRoute exact path="/" component={PurchaseDashboard} />
+                                    <PrivateRoute exact path="/eat" component={EatDashboard} />
                                     <Route exact path="/register" component={Register} />
                                     <Route exact path="/login" component={Login} />
                                 </Switch>

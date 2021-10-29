@@ -33,9 +33,11 @@ class EatViewSet(viewsets.ModelViewSet):
             snacks = self.request.user.snacks.all()
             return snacks.eats.all() """
 
-    queryset = Eat.objects.all() # this just displays all the eats objects out there
+    def get_queryset(self):
+        snacks = self.request.user.snacks.all()
+        return Eat.objects.filter(snack__in=snacks)
 
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.snack)
+        serializer.save(snack=serializer.snack)
 

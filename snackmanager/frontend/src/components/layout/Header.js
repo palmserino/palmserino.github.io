@@ -54,9 +54,6 @@ export class Header extends Component {
                     <Link to="/eat" className="navbar-brand">Eat</Link>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="/api/snacks">API</a>
-                        </li>
-                        <li className="nav-item">
                         <a className="nav-link active" aria-current="page" href="/admin">Admin</a>
                         </li>
                     </ul>

@@ -10,6 +10,7 @@ class SnackSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class EatSerializer(serializers.ModelSerializer):
+    snack = SnackSerializer()
     class Meta:
         model = Eat
         fields = '__all__'
