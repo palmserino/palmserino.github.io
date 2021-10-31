@@ -9,6 +9,7 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+  # check that docker container migrations have been applied if model/object issues
   django-backend:
     build: . 
     command: python ./snackmanager/manage.py runserver 0.0.0.0:8000
