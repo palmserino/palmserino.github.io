@@ -2,5 +2,7 @@
 
 Web service that aims to provide more information about snacking habbits 
 
-Backend --> Django
-Frontend --> React
+The backend API is built with Django
+The fronent is built with React
+
+Containerized with Docker, and deployed with Docker Compose 
