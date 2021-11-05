@@ -17,3 +17,7 @@ services:
       - 8000:8000
     depends_on:
       - db
+  react-frontend:
+    build: 
+      context: ./snackmanager/frontend
+      dockerfile: Dockerfile
