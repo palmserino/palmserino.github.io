@@ -1,2 +1,0 @@
-REST API Notes
-- serializers allow complex data to be converted to JSON, etc for the API 
