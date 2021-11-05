@@ -1,8 +1,9 @@
 # palmserino.github.io
 
-Web service that aims to provide more information about snacking habbits 
+Fun web service that helps with snacking habits
 
 The backend API is built with Django
+PostgreSQL Database 
 The fronent is built with React
 
-Containerized with Docker, and deployed with Docker Compose 
+Uses Docker in addition to Docker Compose to deploy services 
