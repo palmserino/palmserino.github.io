@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { createGlobalStyle } from 'styled-components';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
@@ -21,6 +22,13 @@ import { Provider } from 'react-redux'; // provider connects react to redux
 import store from '../store'; 
 import { loadUser } from '../actions/auth';
 
+const GlobalStyle = createGlobalStyle`
+   @import url("https://fonts.googleapis.com/css?family=Quicksand");
+   body {
+      color: red;
+   }
+`
+
 // Alert Options
 const alertOptions = {
     timeout: 3000,
@@ -39,6 +47,7 @@ class App extends Component {
                 <AlertProvider template={AlertTemplate} {...alertOptions}>
                     <Router>
                         <Fragment>
+                            <GlobalStyle />
                             <Header />
                             <Alerts />
                             <div className='container'>
