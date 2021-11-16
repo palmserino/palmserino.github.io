@@ -31,8 +31,7 @@ class EatViewSet(viewsets.ModelViewSet):
         return Eat.objects.all()
         
     def perform_create(self, serializer):
-        print(self.request)
-        serializer.save(snack=serializer.snack)
+        serializer.save()
 
 
 
