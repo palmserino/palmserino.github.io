@@ -38,7 +38,7 @@ class EatViewSet(viewsets.ModelViewSet):
         # create a new eat where the snack is = to the snack object with the given ID of the snack
         new_eat = Eat.objects.create(amount=eat_data['amount'], satisfaction=eat_data['satisfaction'],
                                         location=eat_data['location'], 
-                                        snack=Snack.objects.get(id=eat_data['snack'])) # get the snack object with the corresponding id 
+                                        snack=Snack.objects.get(id=eat_data['id'])) # get the snack object with the corresponding id 
 
         # save it in db 
         new_eat.save()
