@@ -22,3 +22,12 @@ services:
     build: 
       context: ./snackmanager/frontend
       dockerfile: Dockerfile
+    volumes:
+      - './:/app/snackmanager/frontend'
+      - '/app/snackmanage/frontend/node_modules'
+    ports:
+      - 3000:3000
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev

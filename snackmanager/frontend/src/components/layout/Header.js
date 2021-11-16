@@ -50,7 +50,7 @@ export class Header extends Component {
                     <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a className="navbar-brand" href="/">Purchase</a>
+                    <a className="navbar-brand" href="/">Purchase12312312</a>
                     <Link to="/eat" className="navbar-brand">Eat</Link>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
