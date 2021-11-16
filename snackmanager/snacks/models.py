@@ -24,7 +24,7 @@ class Snack(models.Model):
                                 null=True )
 
     def __str__(self):
-        return self.name 
+        return self.name + str(self.id)
 
     def get_absolute_url(self):
         return reverse('snack-detail', kwargs={'pk': self.pk})
@@ -35,14 +35,13 @@ class Eat(models.Model):
     amount = models.FloatField(default=0.0,validators=[MinValueValidator(0.0), MaxValueValidator(1.0)],) 
     satisfaction = models.IntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(10)])
     location = models.CharField(max_length=20, null=True)
-    description = models.CharField(max_length=100, default="")
 
-    """ snack = models.ForeignKey(Snack, related_name="eats", on_delete=models.CASCADE,
-                                null=True ) """
+    snack = models.ForeignKey(Snack, related_name="eats", on_delete=models.CASCADE,
+                                null=True)
 
     def __str__(self):
         #return str(self.snack.name) + '-' + str(self.id) # eats are associated with a snack and the eats id 
-        return str(self.id)
+        return str(self.snack) + "-" + str(self.id)
 
     def get_absolute_url(self):
         return reverse('eat-detail', kwargs={'pk': self.pk})
