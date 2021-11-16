@@ -1,5 +1,6 @@
 from .models import Snack, Eat 
 from rest_framework import viewsets, permissions
+from rest_framework.response import Response
 from .serializers import SnackSerializer, EatSerializer
 
 # django viewsets == Resources/Controllers in other frameworks 
@@ -30,8 +31,22 @@ class EatViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Eat.objects.all()
         
-    def perform_create(self, serializer):
-        serializer.save()
+    def create(self,request):
+        # get the data from our request
+        eat_data = request.data 
+ 
+        # create a new eat where the snack is = to the snack object with the given ID of the snack
+        new_eat = Eat.objects.create(amount=eat_data['amount'], satisfaction=eat_data['satisfaction'],
+                                        location=eat_data['location'], 
+                                        snack=Snack.objects.get(id=eat_data['snack'])) # get the snack object with the corresponding id 
+
+        # save it in db 
+        new_eat.save()
+        
+        # create a serializer for it to return
+        serializer = EatSerializer(new_eat)
+
+        return Response(data=serializer.data)
 
 
 

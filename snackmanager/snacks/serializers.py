@@ -14,3 +14,4 @@ class EatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Eat
         fields = '__all__'
+        depth = 1 # gets the associated snack data for the id 
